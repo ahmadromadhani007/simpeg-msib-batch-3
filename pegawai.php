@@ -1,10 +1,15 @@
 <?php
 //ciptakan object dari class Pegawai
 $model = new Pegawai();
-
 //panggil fungsi untuk menampilkan data pegawai
 $data_pegawai = $model->dataPegawai();
-
+/*
+foreach ($data_pegawai as $row) {
+    print $row['nip'] . "\t";
+    print $row['nama'] . "\t";
+    print $row['alamat'] . "\n";
+}
+*/
 ?>
 <section class="section schedule">
     <div class="container">
@@ -17,6 +22,10 @@ $data_pegawai = $model->dataPegawai();
         </div>
         <div class="row">
             <div class="col-12">
+                <a class="btn btn-primary btn-sm" href="index.php?hal=pegawai_form" role="button" title="Tambah Pegawai">
+                    &nbsp;<i class="fa fa-plus" aria-hidden="true"></i>&nbsp;
+                </a>
+                <br /><br />
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -24,6 +33,8 @@ $data_pegawai = $model->dataPegawai();
                             <th scope="col">NIP</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Gender</th>
+                            <th scope="col">Divisi</th>
+                            <th scope="col">Jabatan</th>
                             <th scope="col">Alamat</th>
                             <th scope="col">Aksi</th>
                         </tr>
@@ -38,10 +49,12 @@ $data_pegawai = $model->dataPegawai();
                                 <td><?= $row['nip'] ?></td>
                                 <td><?= $row['nama'] ?></td>
                                 <td><?= $row['gender'] ?></td>
+                                <td><?= $row['bagian'] ?></td>
+                                <td><?= $row['jab'] ?></td>
                                 <td><?= $row['alamat'] ?></td>
                                 <td>
                                     <a href="index.php?hal=pegawai_detail&id=<?= $row['id'] ?>">
-                                    <i class="fa fa-eye"></i>
+                                        <i class="fa fa-eye"></i>
                                     </a>
                                 </td>
                             </tr>

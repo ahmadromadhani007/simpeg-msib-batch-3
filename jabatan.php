@@ -1,10 +1,8 @@
 <?php
-//ciptakan object dari class Pegawai
+//ciptakan object dari class Jabatan
 $model = new Jabatan();
-
 //panggil fungsi untuk menampilkan data pegawai
 $data_jabatan = $model->dataJabatan();
-
 ?>
 <section class="section schedule">
     <div class="container">

@@ -1,21 +1,23 @@
 <?php
-//------sertakan file koneksi db-------
+//------sertakan file koneksi db------
 include_once 'koneksi.php';
-//------sertakan models-----
+//------sertakan models------
 include_once 'models/Pegawai.php';
 include_once 'models/Divisi.php';
 include_once 'models/Jabatan.php';
-//------sertakan potongan file template web-----
+
+//------sertakan potongan2 file template web------
 include_once 'header.php';
 include_once 'navigation.php';
-
-//area main logic
-//tangap area main di logic request menu di url 
+echo '<br/>';
+//area main di logic
+//tangkap request menu di url (index.php?hal=.....)
 $hal = $_REQUEST['hal'];
-//jika ada reqeust menu di url tampilkan sesai request
+//jika ada request dari menu di url tampilkan hal sesuai request
 if (!empty($hal)) {
     include_once $hal . '.php';
-} else {
+} else { //jika tidak ada request dari menu di url tampilkan hal home.php
     include_once 'home.php';
 }
+
 include_once 'footer.php';
