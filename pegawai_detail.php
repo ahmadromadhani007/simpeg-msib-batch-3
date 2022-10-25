@@ -51,6 +51,12 @@ $pegawai = $model->getPegawai($id);
                                 <li>Alamat: <?= $pegawai['alamat'] ?></li>
                             </ul>
                         </div>
+                        <br>
+                        <p align="right">
+                            <a href="index.php?hal=pegawai" class="btn btn-primary btn-sm" title="back">
+                                <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>

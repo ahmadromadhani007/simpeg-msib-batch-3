@@ -53,9 +53,21 @@ foreach ($data_pegawai as $row) {
                                 <td><?= $row['jab'] ?></td>
                                 <td><?= $row['alamat'] ?></td>
                                 <td>
-                                    <a href="index.php?hal=pegawai_detail&id=<?= $row['id'] ?>">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
+                                    <form action="pegawai_controller.php" method="POST">
+                                        <a href="index.php?hal=pegawai_detail&id=<?= $row['id'] ?>">
+                                            <button type="button" class="btn btn-info btn-sm" title="Detail Pegawai">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </a>
+                                        <a href="index.php?hal=pegawai_form&idedit<?= $row['id'] ?>">
+                                            <button type="button" class="btn btn-warning btn-sm" title="Ubah Pegawai">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </button>
+                                        </a>
+                                        <button type="submit" class="btn btn-danger btn-sm" name="proses" value="hapus" onclick="return confirm ('Apakah anda sudah yakin akan di hapus ???')" title="Destroy Pegawai">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         <?php
