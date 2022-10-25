@@ -45,4 +45,11 @@ class Pegawai
         $ps = $this->koneksi->prepare($sql);
         $ps->execute($data);
     }
+    public function ubah($data)
+    {
+        $sql = "UPDATE pegawai SET nip=?, nama=?, gender=?, foto=?,tmp_lahir=?, tgl_lahir=?, jabatan_id=?, divisi_id=?,alamat=? WHERE id=?";
+        //menggunakan mekanisme prepare statement PDO
+        $ps = $this->koneksi->prepare($sql);
+        $ps->execute($data);
+    }
 }

@@ -2,9 +2,15 @@
 //ciptakan object dari class Jabatan & Divisi
 $obj_jabatan = new Jabatan();
 $obj_divisi = new Divisi();
+$obj_pegawai = new Pegawai();
 //panggil fungsi untuk menampilkan data jabatan & divisi
 $data_jabatan = $obj_jabatan->dataJabatan();
 $data_divisi = $obj_divisi->dataDivisi();
+
+//proses edit data request 
+$idedit = $_REQUEST['idedit'];
+$peg = (!empty($idedit)) ? $obj_pegawai->getPegawai($idedit) : array();
+
 ?>
 <section class="page-title bg-title overlay-dark">
     <div class="container">
@@ -36,12 +42,15 @@ $data_divisi = $obj_divisi->dataDivisi();
         </div>
         <form action="pegawai_controller.php" method="POST" class="row">
             <div class="col-md-6">
-                <input type="text" class="form-control main" name="nip" id="nip" placeholder="NIP">
+                <label class="form-label font-weight-bold">NIP</label>
+                <input type="text" class="form-control main" name="nip" id="nip" placeholder="NIP" value="<? $peg['nip'] ?>">
             </div>
             <div class="col-md-6">
-                <input type="text" class="form-control main" name="nama" id="nama" placeholder="Nama">
+                <label class="form-label font-weight-bold">Nama</label>
+                <input type="text" class="form-control main" name="nama" id="nama" placeholder="Nama" value="<? $peg['nama'] ?>">
             </div>
             <div class="col-md-6">
+                <label class="form-label font-weight-bold">Jenis Kelamin</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="gender" value="L">
                     <label class="form-check-label">
@@ -56,15 +65,19 @@ $data_divisi = $obj_divisi->dataDivisi();
                 </div>
             </div>
             <div class="col-md-6">
+                <label class="form-label font-weight-bold">Foto</label>
                 <input type="text" class="form-control main" name="foto" id="foto" placeholder="Foto">
             </div>
             <div class="col-md-6">
+                <label class="form-label font-weight-bold">Tempat Lahir</label>
                 <input type="text" class="form-control main" name="tmp_lahir" placeholder="Tempat Lahir">
             </div>
             <div class="col-md-6">
+                <label class="form-label font-weight-bold">Tanggal Lahir</label>
                 <input type="date" class="form-control main" name="tgl_lahir">
             </div>
             <div class="col-md-6">
+                <label class="form-label font-weight-bold">Jabatan</label>
                 <div class="form-group">
                     <select class="form-control main" name="jabatan">
                         <option selected>-- Pilih Jabatan --</option>
@@ -80,6 +93,7 @@ $data_divisi = $obj_divisi->dataDivisi();
             </div>
             <div class="col-md-6">
                 <div class="form-group">
+                    <label class="form-label font-weight-bold">Divisi</label>
                     <select class="form-control main" name="divisi">
                         <option selected>-- Pilih Divisi --</option>
                         <?php
@@ -93,11 +107,19 @@ $data_divisi = $obj_divisi->dataDivisi();
                 </div>
             </div>
             <div class="col-md-12">
+                <label class="form-label font-weight-bold">Alamat</label>
                 <textarea name="alamat" id="alamat" class="form-control main" rows="10" placeholder="Alamat"></textarea>
             </div>
             <div class="col-12 text-center">
-                <button type="submit" name="proses" value="simpan" class="btn btn-main-md">Simpan</button>
-                <button type="submit" name="proses" value="batal" class="btn btn-info-md">Batal</button>
+                <?php
+                if (empty($idedit)) {
+                ?>
+                    <button type="submit" name="proses" value="simpan" class="btn btn-success btn-lg">Simpan</button>
+                <?php } else {
+                ?>
+                    <button type="submit" name="proses" value="ubah" class="btn btn-warning btn-lg">Ubah</button>
+                <?php } ?>
+                <button type="submit" name="proses" value="batal" class="btn btn-info btn-lg">Batal</button>
             </div>
         </form>
     </div>
